@@ -4,38 +4,13 @@ prompt_configuration()
 {
 	printf "\t${BOLD}Configuration${NC}\n\n"
 	printf "The project directory (default: ../pipex): "
-	read project_directory
-	if [ -z "$project_directory" ]
-	then
-		project_directory="../pipex"
-	fi
-	if [ -z "$project_directory" ]
-	then
-		project_directory="../pipex"
-	fi
+	
+	project_directory="../"
+
 	printf "\n"
 	printf "Would you like to check for updates on run ?\nThis option is recommended as the tester is still actively updated\n"
-	check_update=-1
-	while [ $check_update -ne 0 ] && [ $check_update -ne 1 ]
-	do
-		printf "Check for update on run [Y/n] "
-		nchars_opt="-N"
-		if [[ "$OSTYPE" == "darwin"* ]]
-		then
-			nchars_opt="-n"
-		fi
-		read $nchars_opt 1 -r check_update
-		[[ "$check_update" != $'\n' ]] && echo
-		case "$check_update" in
-			[nN]) check_update=0 ;;
-			[yY$'\n']) check_update=1 ;;
-		esac
-		if [ "$check_update" != "0" ] && [ "$check_update" != "1" ]
-		then
-			printf "${YELLOW}Unexpected answer. Please retry...${NC}\n"
-			check_update=-1
-		fi
-	done
+	check_update=0
+
 
 	if ! touch config.vars > /dev/null 2>&1 && ! [ -w config.vars ]
 	then

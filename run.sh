@@ -58,7 +58,7 @@ READ_CONFIG=1
 UPDATE=0
 VERBOSE=0
 
-source scripts/config.sh
+# source scripts/config.sh
 
 DISABLE_TIMEOUT=0
 TESTS_OK=0
@@ -128,10 +128,10 @@ then
 	. config.vars
 fi
 
-if [ -z "$PROJECT_DIRECTORY" ] || [ -z "$CHECK_UPDATE" ]
-then
-	prompt_configuration
-fi
+# if [ -z "$PROJECT_DIRECTORY" ] || [ -z "$CHECK_UPDATE" ]
+# then
+# 	prompt_configuration
+# fi
 
 # Update
 if [ $UPDATE -gt 0 ] || ([ $CHECK_UPDATE -gt 0 ] && should_update)
